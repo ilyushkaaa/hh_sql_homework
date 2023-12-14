@@ -45,10 +45,10 @@ CREATE TABLE employers
 CREATE TABLE resumes
 (
     id                  serial primary key,
-    title               varchar not null,
-    job_seeker_id       integer not null references job_seekers (id),
-    specialization_id   integer not null references specializations (id),
-    date_of_publication date    not null,
+    title               varchar   not null,
+    job_seeker_id       integer   not null references job_seekers (id),
+    specialization_id   integer   not null references specializations (id),
+    time_of_publication timestamp not null,
     work_experience     work_experience,
     schedule_type       schedule_type
 
@@ -67,7 +67,7 @@ CREATE TABLE vacancies
     description              text            not null,
     required_education_level education_level not null,
     schedule_type            schedule_type   not null,
-    date_of_publication      date            not null,
+    time_of_publication      timestamp       not null,
     area_id                  varchar         not null,
     address                  varchar
 );
@@ -75,7 +75,7 @@ CREATE TABLE vacancies
 CREATE TABLE responses
 (
     id               serial primary key,
-    vacancy_id       integer not null references vacancies (id),
-    resume_id        integer not null references resumes (id),
-    date_of_response date    not null
+    vacancy_id       integer   not null references vacancies (id),
+    resume_id        integer   not null references resumes (id),
+    time_of_response timestamp not null
 );
